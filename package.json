@@ -1,0 +1,13 @@
+{
+  "name": "uid_ordermatic_repo",
+  "version": "1.0.0",
+  "description": "This Repository is created for the UID Lecture Project in WS2425. Nils is testing if this is working",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
