@@ -9,7 +9,12 @@ import { Button } from "../components/ui/button";
 
 const OrderHistory = () => {
   const [showFilter, setShowFilter] = useState(false);
-  const [filteredOrders, setFilteredOrders] = useState<Order[]>(mockOrders);
+  const [filteredOrders, setFilteredOrders] = useState<Order[]>(
+    [...mockOrders].sort((a, b) => 
+      new Date(b.orderDate).getTime() - new Date(a.orderDate).getTime()
+    )
+  );
+
 
   const handleApplyFilters = (filters: {
     search: string;
@@ -20,7 +25,6 @@ const OrderHistory = () => {
     deliveryDateEnd: string;
   }) => {
     let filtered = mockOrders;
-
     if (filters.search) {
       const searchLower = filters.search.toLowerCase();
       filtered = filtered.filter(
@@ -58,11 +62,15 @@ const OrderHistory = () => {
       );
     }
 
-    setFilteredOrders(filtered);
+    setFilteredOrders(
+      [...filtered].sort((a, b) => 
+        new Date(b.orderDate).getTime() - new Date(a.orderDate).getTime()
+      )
+    );
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-white max-w-md mx-auto border-x">
       <Header showBack />
       
       <div className="p-4">

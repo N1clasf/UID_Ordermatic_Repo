@@ -1,5 +1,7 @@
 import { Order } from "../types/order";
 import { useNavigate } from "react-router-dom";
+import { Send, Flag } from "lucide-react";
+
 
 interface OrderCardProps {
   order: Order;
@@ -40,9 +42,15 @@ const OrderCard = ({ order }: OrderCardProps) => {
         </div>
       </div>
       <div className="flex justify-between text-sm">
-        <div>{order.startingAddress.city}</div>
+        <div className="flex items-center gap-1">
+          <Send className="w-4 h-4 text-gray-500" />
+          {order.startingAddress.city}
+        </div>
         <div>→</div>
-        <div>{order.deliveryAddress.city}</div>
+        <div className="flex items-center gap-1">
+          <Flag className="w-4 h-4 text-gray-500" />
+          {order.deliveryAddress.city}
+        </div>
       </div>
     </div>
   );
